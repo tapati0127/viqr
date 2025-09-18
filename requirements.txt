@@ -1,0 +1,2 @@
+pyserini==1.2.0
+faiss-cpu==1.12.0
