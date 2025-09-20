@@ -1,3 +1,6 @@
+export HF_HUB_ENABLE_HF_TRANSFER=1
+export TRANSFORMERS_TRUST_REMOTE_CODE=1
+
 INDEX_NAME=bge-m3
 INDEX_PATH=./new_static/index/${INDEX_NAME}/
 git lfs install
