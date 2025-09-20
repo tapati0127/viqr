@@ -1,6 +1,19 @@
 export HF_HUB_ENABLE_HF_TRANSFER=1
 export TRANSFORMERS_TRUST_REMOTE_CODE=1
 
+
+OUTPUT=./new_static/index/bge-m3
+INPUT=./new_static/doc_prompt
+
+if [ ! -f "$OUTPUT" ]; then
+    echo "Creating index..."
+    python -m pyserini.encode input  --corpus ${INPUT} --shard-id 0 output  --embeddings ${OUTPUT} --to-faiss \
+        encoder --encoder BAAI/bge-m3 --batch 32 --device cuda:0 --encoder-class sentence-transformers \
+        --dimension 1024 
+
+fi
+
+
 INDEX_NAME=bge-m3
 INDEX_PATH=./new_static/index/${INDEX_NAME}/
 git lfs install
