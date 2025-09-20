@@ -35,6 +35,7 @@ else
     wget "$URL" -O "$FILE"
 fi
 
+apt install unzip
 # Unzip if not already extracted
 DIR="new_static"
 if [ -d "$DIR" ]; then
