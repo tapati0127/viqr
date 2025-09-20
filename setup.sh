@@ -14,7 +14,32 @@ fi
 
 # Install the .deb package
 echo "Installing JDK..."
-sudo dpkg -i "$FILE"
+dpkg -i "$FILE"
 
 # Fix missing dependencies if any
-sudo apt-get install -f -y
+apt-get install -f -y
+
+echo "Installing requirements..."
+pip install -r requirements.txt
+
+
+# URL to download STATIC
+URL="https://trientp-public.s3.ap-northeast-1.amazonaws.com/new_static.zip"
+FILE="new_static.zip"
+
+# Check if the file already exists
+if [ -f "$FILE" ]; then
+    echo "File $FILE already exists, skipping download."
+else
+    echo "Downloading $FILE..."
+    wget "$URL" -O "$FILE"
+fi
+
+# Unzip if not already extracted
+DIR="new_static"
+if [ -d "$DIR" ]; then
+    echo "Directory $DIR already exists, skipping extraction."
+else
+    echo "Extracting $FILE..."
+    unzip "$FILE" -d "$DIR"
+fi
