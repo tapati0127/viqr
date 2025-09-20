@@ -44,3 +44,5 @@ else
     echo "Extracting $FILE..."
     unzip "$FILE" -d "$DIR"
 fi
+
+git lfs install
