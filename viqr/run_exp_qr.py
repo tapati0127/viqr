@@ -55,10 +55,10 @@ df = pd.read_csv(args.data_path)
 data = build_query_rewriting_data_with_labels(df)
 
 if args.model_type == "vit5qr":
-    model = ViT5QR(model_path = os.path.join(args.model_base_dir, args.model_name), 
+    model = ViT5QR(model_path = args.model_name, 
                    device = args.device)
 elif args.model_type == "vit5qr-tokendecider":
-    model = ViT5QRTokenDecider(model_path =  os.path.join(args.model_base_dir, args.model_name),
+    model = ViT5QRTokenDecider(model_path = args.model_name,
                                device = args.device)
     
 retriever = Retriever(retriever_type=args.retriever_type,

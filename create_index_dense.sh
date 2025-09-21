@@ -18,8 +18,8 @@ INDEX_NAME=bge-m3
 INDEX_PATH=./new_static/index/${INDEX_NAME}/
 git lfs install
 git clone git@hf.co:datasets/trientp/${INDEX_NAME}
-cd ${INDEX_NAME}
 cp -r ${INDEX_PATH} .
+cd ${INDEX_NAME}
 git add .
 git commit -m "Initial upload"
 git push

@@ -5,12 +5,13 @@ RETRIEVER_TYPE=dense
 NUM_QUERIES=1
 MODEL_NAME=0
 MODEL_TYPE=0
-INDEX_PATH=static/index/dense_bge-m3
+INDEX_PATH=./new_static/index/bge-m3
 ENCODER_PATH=BAAI/bge-m3
+INDEX_NAME=bge-m3
 
-RANKING_PATH=/data1/workspaces/trientp/viqr/rankings/non/${RETRIEVER_TYPE}.${MODEL_NAME}.${NUM_QUERIES}.${SUBSET}.tsv
-QRELS=/data1/workspaces/trientp/viqr/static/${RETRIEVER_TYPE}/qrels.${SUBSET}.tsv
-EVAL=/data1/workspaces/trientp/viqr/exp/non_${RETRIEVER_TYPE}.${MODEL_NAME}.${NUM_QUERIES}.${SUBSET}.tsv
+RANKING_PATH=./new_static/exp/${INDEX_NAME}/${RETRIEVER_TYPE}.${MODEL_NAME}.${NUM_QUERIES}.${SUBSET}.tsv
+QRELS=./new_static/${RETRIEVER_TYPE}/qrels.${SUBSET}.tsv
+EVAL=./new_static/exp/${INDEX_NAME}/non_${RETRIEVER_TYPE}.${MODEL_NAME}.${NUM_QUERIES}.${SUBSET}.tsv
 ###########
 START_TIME=$(date +%s%3N)
 PYTHONPATH=. python viqr/run_exp_qr.py --subset test\

@@ -2,13 +2,14 @@
 SUBSET=test
 RETRIEVER_TYPE=dense
 MODEL_NAME=org-question
-INDEX_PATH=static/index/dense
-MODEL=bkai-foundation-models/vietnamese-bi-encoder
+INDEX_PATH=./new_static/index/bge-m3
+MODEL=BAAI/bge-m3
+INDEX_NAME=bge-m3
 
-INPUT=/data1/workspaces/trientp/viqr/static/${RETRIEVER_TYPE}/${RETRIEVER_TYPE}-${MODEL_NAME}.${SUBSET}.tsv
-RANKING_PATH=/data1/workspaces/trientp/viqr/rankings/${RETRIEVER_TYPE}.${MODEL_NAME}.${SUBSET}.tsv
-QRELS=/data1/workspaces/trientp/viqr/static/${RETRIEVER_TYPE}/qrels.${SUBSET}.tsv
-EVAL=/data1/workspaces/trientp/viqr/exp/${RETRIEVER_TYPE}.${MODEL_NAME}.${SUBSET}.tsv
+INPUT=./new_static/${RETRIEVER_TYPE}/${RETRIEVER_TYPE}-${MODEL_NAME}.${SUBSET}.tsv
+RANKING_PATH=./new_static/exp/${INDEX_NAME}/${RETRIEVER_TYPE}.${MODEL_NAME}.${SUBSET}.tsv
+QRELS=./new_static/${RETRIEVER_TYPE}/qrels.${SUBSET}.tsv
+EVAL=./new_static/exp/${INDEX_NAME}/${RETRIEVER_TYPE}.${MODEL_NAME}.${SUBSET}.tsv
 
 python -m pyserini.search.faiss \
   --index ${INDEX_PATH} \
