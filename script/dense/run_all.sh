@@ -1,3 +1,4 @@
+bash script/dense/run_non_rewrite.sh
 bash script/dense/run_original_question.sh
 bash script/dense/run_human_rewrite.sh
 bash script/dense/run_qr.sh
