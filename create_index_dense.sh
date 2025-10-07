@@ -44,25 +44,37 @@
 
 # fi
 
-OUTPUT=./new_static/index/snowflake-arctic-embed-l-v2.0
+# OUTPUT=./new_static/index/snowflake-arctic-embed-l-v2.0
+# INPUT=./new_static/doc
+
+# if [ ! -f "$OUTPUT" ]; then
+#     echo "Creating index..."
+#     python -m pyserini.encode input  --corpus ${INPUT} --shard-id 0 output  --embeddings ${OUTPUT} --to-faiss \
+#         encoder --encoder Snowflake/snowflake-arctic-embed-l-v2.0 --batch 32 --device cuda:0 --encoder-class sentence-transformers \
+#         --dimension 1024 
+
+# fi
+
+
+# OUTPUT=./new_static/index/gte-multilingual-base
+# INPUT=./new_static/doc
+
+# if [ ! -f "$OUTPUT" ]; then
+#     echo "Creating index..."
+#     python -m pyserini.encode input  --corpus ${INPUT} --shard-id 0 output  --embeddings ${OUTPUT} --to-faiss \
+#         encoder --encoder Alibaba-NLP/gte-multilingual-base --batch 32 --device cuda:0 --encoder-class sentence-transformers \
+#         --dimension 768 
+
+# fi
+
+
+OUTPUT=./new_static/index/embeddinggemma-300m
 INPUT=./new_static/doc
 
 if [ ! -f "$OUTPUT" ]; then
     echo "Creating index..."
     python -m pyserini.encode input  --corpus ${INPUT} --shard-id 0 output  --embeddings ${OUTPUT} --to-faiss \
-        encoder --encoder Snowflake/snowflake-arctic-embed-l-v2.0 --batch 32 --device cuda:0 --encoder-class sentence-transformers \
-        --dimension 1024 
-
-fi
-
-
-OUTPUT=./new_static/index/gte-multilingual-base
-INPUT=./new_static/doc
-
-if [ ! -f "$OUTPUT" ]; then
-    echo "Creating index..."
-    python -m pyserini.encode input  --corpus ${INPUT} --shard-id 0 output  --embeddings ${OUTPUT} --to-faiss \
-        encoder --encoder Alibaba-NLP/gte-multilingual-base --batch 32 --device cuda:0 --encoder-class sentence-transformers \
+        encoder --encoder google/embeddinggemma-300m --batch 32 --device cuda:0 --encoder-class sentence-transformers \
         --dimension 768 
 
 fi

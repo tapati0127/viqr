@@ -1,5 +1,5 @@
 from typing import List
-from transformers import AutoModelForSeq2SeqLM, AutoTokenizer
+from transformers import AutoModelForSeq2SeqLM, AutoTokenizer, AutoModel, AutoModelForCausalLM
 
 class ViT5QR:
     def __init__(self, 
@@ -11,6 +11,7 @@ class ViT5QR:
                  separator: str = "<pad>"
                  ):
         self._device = device
+        # self._model = AutoModelForCausalLM.from_pretrained(model_path).to(device)
         self._model = AutoModelForSeq2SeqLM.from_pretrained(model_path).to(device)
         self._tokenizer = AutoTokenizer.from_pretrained(model_path, truncation_side=truncation_side) 
         self._input_max_length = input_max_length
